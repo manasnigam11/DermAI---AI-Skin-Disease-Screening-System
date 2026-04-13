@@ -171,6 +171,90 @@
   ],
   "209V7wM5JvQbdEtpkyWWbhh4riM2": [
     {
+      "timestamp": "2026-04-13T19:36:31.546811",
+      "predictions": [
+        {
+          "disease": "Nevi",
+          "confidence": 0.5919
+        },
+        {
+          "disease": "SkinCancer",
+          "confidence": 0.3791
+        },
+        {
+          "disease": "Keratosis",
+          "confidence": 0.0237
+        }
+      ],
+      "symptoms": {
+        "itching": true,
+        "redness": false,
+        "burning": true,
+        "allergy": false,
+        "spreading": true,
+        "dry_flaky": false
+      },
+      "results": [
+        {
+          "disease": "Nevi",
+          "probability": 0.5982,
+          "label": "Possible"
+        },
+        {
+          "disease": "SkinCancer",
+          "probability": 0.3831,
+          "label": "Possible"
+        },
+        {
+          "disease": "Keratosis",
+          "probability": 0.0187,
+          "label": "Maybe"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-04-13T19:22:21.930396",
+      "predictions": [
+        {
+          "disease": "Nevi",
+          "confidence": 0.5127
+        },
+        {
+          "disease": "Keratosis",
+          "confidence": 0.3885
+        },
+        {
+          "disease": "SkinCancer",
+          "confidence": 0.0877
+        }
+      ],
+      "symptoms": {
+        "itching": true,
+        "redness": true,
+        "burning": true,
+        "allergy": false,
+        "spreading": false,
+        "dry_flaky": true
+      },
+      "results": [
+        {
+          "disease": "Nevi",
+          "probability": 0.4449,
+          "label": "Possible"
+        },
+        {
+          "disease": "Keratosis",
+          "probability": 0.4308,
+          "label": "Possible"
+        },
+        {
+          "disease": "SkinCancer",
+          "probability": 0.1243,
+          "label": "Maybe"
+        }
+      ]
+    },
+    {
       "timestamp": "2026-04-09T22:19:49.006252",
       "predictions": [
         {

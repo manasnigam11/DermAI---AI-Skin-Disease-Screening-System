@@ -8,6 +8,7 @@ from PIL import Image
 import json
 import io
 import os
+import urllib.request
 from datetime import datetime
 
 app = FastAPI(title="DermAI – Intelligent Skin Disease Early Screening System")
@@ -209,12 +210,30 @@ async def get_history(user_id: str = Query(default="anonymous")):
 # --------------- /derma (Nearby dermatologists) ---------------
 @app.get("/derma")
 async def get_dermatologists(lat: float = Query(default=28.6139), lng: float = Query(default=77.2090)):
-    """Returns a list of nearby dermatologists. In production, this would query a real API."""
+    """Returns a list of nearby dermatologists. Uses reverse geocoding to simulate results near the user."""
+    location_name = "your area"
+    
+    # Simple reverse geocoding using Nominatim (OpenStreetMap)
+    try:
+        req = urllib.request.Request(
+            f"https://nominatim.openstreetmap.org/reverse?format=json&lat={lat}&lon={lng}",
+            headers={"User-Agent": "DermAI-App/1.0"}
+        )
+        res = urllib.request.urlopen(req, timeout=3)
+        data = json.loads(res.read())
+        address = data.get("address", {})
+        
+        # Priority fallback for city/locality name
+        location_name = address.get("city") or address.get("town") or address.get("suburb") or address.get("county") or address.get("state") or "your area"
+    except Exception as e:
+        print(f"[DermAI - Geocoding Failed]: {e}")
+        pass
+
     doctors = [
-        {"name": "Dr. Priya Sharma", "specialty": "Dermatology & Cosmetology", "address": "Apollo Hospital, Sector 26, Noida", "distance": "2.3 km", "rating": 4.8, "phone": "+91-9876543210"},
-        {"name": "Dr. Rajesh Kumar", "specialty": "Clinical Dermatology", "address": "Max Super Speciality Hospital, Saket", "distance": "4.1 km", "rating": 4.6, "phone": "+91-9123456789"},
-        {"name": "Dr. Anita Gupta", "specialty": "Dermatology & Venereology", "address": "Fortis Hospital, Vasant Kunj", "distance": "5.7 km", "rating": 4.7, "phone": "+91-9988776655"},
-        {"name": "Dr. Vikram Singh", "specialty": "Pediatric Dermatology", "address": "AIIMS, Ansari Nagar", "distance": "6.2 km", "rating": 4.9, "phone": "+91-9876501234"},
-        {"name": "Dr. Meena Patel", "specialty": "Skin & Hair Specialist", "address": "Medanta Hospital, Gurgaon", "distance": "8.4 km", "rating": 4.5, "phone": "+91-9012345678"},
+        {"name": "Dr. Priya Sharma", "specialty": "Dermatology & Cosmetology", "address": f"Apollo Hospital, {location_name}", "distance": "2.3 km", "rating": 4.8, "phone": "+91-9876543210"},
+        {"name": "Dr. Rajesh Kumar", "specialty": "Clinical Dermatology", "address": f"Max Super Speciality Hospital, {location_name}", "distance": "4.1 km", "rating": 4.6, "phone": "+91-9123456789"},
+        {"name": "Dr. Anita Gupta", "specialty": "Dermatology & Venereology", "address": f"Fortis Skin Clinic, {location_name}", "distance": "5.7 km", "rating": 4.7, "phone": "+91-9988776655"},
+        {"name": "Dr. Vikram Singh", "specialty": "Pediatric Dermatology", "address": f"City Medical Center, {location_name}", "distance": "6.2 km", "rating": 4.9, "phone": "+91-9876501234"},
+        {"name": "Dr. Meena Patel", "specialty": "Skin & Hair Specialist", "address": f"Care Hospital, {location_name}", "distance": "8.4 km", "rating": 4.5, "phone": "+91-9012345678"},
     ]
-    return {"doctors": doctors, "location": {"lat": lat, "lng": lng}}
+    return {"doctors": doctors, "location": {"lat": lat, "lng": lng}, "location_name": location_name}
