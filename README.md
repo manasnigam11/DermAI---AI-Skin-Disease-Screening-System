@@ -109,7 +109,9 @@ npm run dev
 
 Make sure backend is running before starting the frontend.
 
-##Contribution in this project
+------------------------------------------------------------------------
+
+## Contribution in this project
 
 Vivek Nath Tiwari - All responsibilities related to frontend
 
