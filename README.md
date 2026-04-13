@@ -84,6 +84,7 @@ system.
 
 git clone
 https://github.com/manasnigam11/DermAI---AI-Skin-Disease-Screening-System.git
+
 cd DermAI---AI-Skin-Disease-Screening-System
 
 cd backend
