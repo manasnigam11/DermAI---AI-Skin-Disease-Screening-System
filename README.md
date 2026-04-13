@@ -87,12 +87,18 @@ https://github.com/manasnigam11/DermAI---AI-Skin-Disease-Screening-System.git
 
 cd DermAI---AI-Skin-Disease-Screening-System
 
+How to run backend :
+
 cd backend
-pip install -r requirements.txt
+
 python -m uvicorn api:app --host 127.0.0.1 --port 8000 --reload
 
-cd frontend
+How to run Frontend :
+
+cd frontend'
+
 npm install
+
 npm run dev
 
 Make sure backend is running before starting the frontend.
