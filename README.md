@@ -87,6 +87,12 @@ https://github.com/manasnigam11/DermAI---AI-Skin-Disease-Screening-System.git
 
 cd DermAI---AI-Skin-Disease-Screening-System
 
+## Install dependencies
+
+pip install -r requirements.txt
+
+## Run project
+
 How to run backend :
 
 cd backend
@@ -103,10 +109,10 @@ npm run dev
 
 Make sure backend is running before starting the frontend.
 
-## Install dependencies
+##Contribution in this project
 
-pip install -r requirements.txt
+Vivek Nath Tiwari - All responsibilities related to frontend
 
-## Run project
+Manas Nigam - All responsibilities related to AIML part and symptom-based reasoning system
 
-python main.py
+Pratyush Dev - All responsibilities related to Backend
