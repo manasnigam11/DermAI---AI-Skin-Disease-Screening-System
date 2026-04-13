@@ -118,3 +118,12 @@ Vivek Nath Tiwari - All responsibilities related to frontend
 Manas Nigam - All responsibilities related to AIML part and symptom-based reasoning system
 
 Pratyush Dev - All responsibilities related to Backend
+
+------------------------------------------------------------------------
+
+## My final thoughts after working on this Project
+
+I am really glad that I was able to work on this project this project made me realise how import it is to have a good dataset to get the best model accuracy for your project. Also it forced me to find another approach i.e. symptom-based reasoning system to get even better results. I also gained knowledge about different models while researching for this project.
+
+I hope I will be able to work on even better projects in future.
+------------------------------------------------------------------------
